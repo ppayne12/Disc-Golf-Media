@@ -78,20 +78,54 @@ const Header = (props) => {
           </Grid>
         </Grid>
         <MenuItem
-          sx={{ mt: 3, borderBottom: "2px solid white", fontWeight: "bold" }}
+          sx={{
+            mt: 3,
+            borderBottom: "2px solid white",
+            p: "4px",
+
+            "@media (min-width:600px)": {
+              pr: 3,
+              pl: 3,
+            },
+          }}
           key="coverage"
         >
-          <Typography selected={true} textAlign="center">
+          <Typography
+            variant="h4"
+            sx={{ fontWeight: "600" }}
+            textAlign="center"
+          >
             Coverage
           </Typography>
         </MenuItem>
-        <MenuItem sx={{ mt: 3 }} key="coverage">
-          <Typography selected={true} textAlign="center">
+        <MenuItem
+          sx={{
+            mt: 3,
+            p: "4px",
+            "@media (min-width:600px)": {
+              pr: 3,
+              pl: 3,
+            },
+          }}
+          key="coverage"
+        >
+          <Typography variant="h4" textAlign="center">
             Upcoming
           </Typography>
         </MenuItem>
-        <MenuItem sx={{ mt: 3 }} key="coverage">
-          <Typography selected={true} textAlign="center">
+        <MenuItem
+          sx={{
+            mt: 3,
+            p: "4px",
+
+            "@media (min-width:600px)": {
+              pr: 3,
+              pl: 3,
+            },
+          }}
+          key="coverage"
+        >
+          <Typography variant="h4" textAlign="center">
             About
           </Typography>
         </MenuItem>

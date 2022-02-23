@@ -36,22 +36,24 @@ const TournamentCoverage = () => {
       columns={{ xs: 1, sm: 2, md: 4, lg: 6, xl: 8, xxl: 12 }}
       justifyContent="center"
     >
-      <Box sx={{ p: "15px", mb: "15px" }} gutterBottom>
-        <Typography
-          component="h1"
-          variant="h1"
-          color="inherit"
-          gutterBottom
-          align="center"
-        >
-          Post-Production Coverage
-        </Typography>
-        <Typography variant="subtitle2" align="center">
-          Consolidates links to the latest Disc Golf pro tour and tournament
-          coverage. New links will added as they come. Filter by channel and
-          tier.
-        </Typography>
-      </Box>
+      <Grid item xs={12}>
+        <Box sx={{ p: "15px", mb: "15px" }} gutterBottom>
+          <Typography
+            component="h1"
+            variant="h1"
+            color="inherit"
+            gutterBottom
+            align="center"
+          >
+            Post-Production Coverage
+          </Typography>
+          <Typography variant="subtitle2" align="center">
+            Consolidates links to the latest Disc Golf pro tour and tournament
+            coverage. Filter by channel and tier. New links will added as they
+            come.
+          </Typography>
+        </Box>
+      </Grid>
       {(TD || []).map((snap) => (
         <Grid item xs={2} key={snap.id}>
           <TournamentCard
