@@ -11,25 +11,48 @@ const theme = createTheme({
       main: "#db222a",
     },
     text: {
-      secondary: "#f5f5f5",
-      primary: "rgba(32,32,32,0.87)",
+      secondary: "rgba(32,32,32,0.60)",
+      primary: "rgba(32,32,32,0.90)",
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+      xxl: 2200,
     },
   },
   typography: {
-    h3: {
-      lineHeight: 0.8,
-      fontWeight: 400,
-      fontFamily: "Inter",
-    },
     fontFamily: "Inter",
-    h6: {
-      fontFamily: "Inter",
+
+    h1: {
       fontWeight: 500,
-      textTransform: "uppercase",
       fontSize: "1.5rem",
       "@media (min-width:600px)": {
         fontSize: "2rem",
       },
+    },
+    h2: {
+      fontSize: "x-large",
+    },
+    h3: {
+      fontSize: "medium",
+    },
+    h4: {
+      fontSize: "medium",
+    },
+    h5: {
+      fontSize: "medium",
+      fontWeight: 500,
+      textTransform: "uppercase",
+    },
+    subtitle2: {
+      fontWeight: 300,
+      fontSize: "medium",
+      fontStyle: "italic",
     },
   },
 });

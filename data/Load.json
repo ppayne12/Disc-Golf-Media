@@ -1,0 +1,51 @@
+{
+  "tournament": {
+    "startDate": "September 23, 2021",
+    "endDate": "September 23, 2021",
+    "name": "2021 Music City Open Presented by Dynamic Discs",
+    "location": "Nashville, Tennessee",
+    "division": "Pro",
+    "purse": "$76,505",
+    "links": {
+      "coverage": {
+        "channel": "Jomez",
+        "playlist": "https://www.youtube.com/playlist?list=PLZ1LrAadOyA2YWu0Ban5XVkJckczQ5geX",
+        "card": "Lead",
+        "links": [
+          {
+            "description": "R1F9",
+            "link": "https://www.youtube.com/watch?v=SB2BVmn6uog"
+          },
+          {
+            "description": "R1B9",
+            "link": "https://www.youtube.com/watch?v=bZ3xodqrrNE&t=1s"
+          },
+          {
+            "description": "R2F9",
+            "link": "https://www.youtube.com/watch?v=xBTbNth69dY"
+          },
+          {
+            "description": "R2B9",
+            "link": "https://www.youtube.com/watch?v=DRGuUbpcSao"
+          },
+          {
+            "description": "R3F9",
+            "link": "https://www.youtube.com/watch?v=CJVZ1PY7KO4"
+          },
+          {
+            "description": "R3B9",
+            "link": "https://www.youtube.com/watch?v=4ugm366WsfQ"
+          },
+          {
+            "description": "FINALF9",
+            "link": "https://www.youtube.com/watch?v=6_VXKMJITVM&list=PLZ1LrAadOyA2YWu0Ban5XVkJckczQ5geX&index=8"
+          },
+          {
+            "description": "FINALB9",
+            "link": "https://www.youtube.com/watch?v=nGx80j1Jac0&list=PLZ1LrAadOyA2YWu0Ban5XVkJckczQ5geX&index=7"
+          }
+        ]
+      }
+    }
+  }
+}
