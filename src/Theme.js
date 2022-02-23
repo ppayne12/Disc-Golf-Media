@@ -32,22 +32,34 @@ const theme = createTheme({
       fontWeight: 500,
       fontSize: "1.5rem",
       "@media (min-width:600px)": {
-        fontSize: "2rem",
+        fontSize: "1.8rem",
       },
     },
     h2: {
-      fontSize: "x-large",
+      fontSize: "large",
     },
     h3: {
       fontSize: "medium",
     },
     h4: {
       fontSize: "medium",
+      fontWeight: 500,
+      "@media (min-width:600px)": {
+        fontSize: "large",
+      },
     },
     h5: {
       fontSize: "medium",
-      fontWeight: 500,
+      fontWeight: 600,
       textTransform: "uppercase",
+      "@media (min-width:600px)": {
+        fontSize: "large",
+      },
+    },
+    MenuItem: {
+      "@media (min-width:600px)": {
+        p: 1,
+      },
     },
     subtitle2: {
       fontWeight: 300,
