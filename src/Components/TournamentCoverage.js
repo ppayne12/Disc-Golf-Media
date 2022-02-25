@@ -3,10 +3,9 @@ import TournamentCard from "./TournamentCard";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
 import * as FirestoreService from "../Services/Firestore";
 
-const TournamentCoverage = () => {
+const TournamentCoverage = (props) => {
   const [TD, setTD] = React.useState([]);
 
   React.useEffect(() => {
@@ -16,6 +15,7 @@ const TournamentCoverage = () => {
       data.forEach((snap) => {
         let obj = snap.data();
         obj.id = snap.id;
+        obj.display = true;
         objArray.push(obj);
       });
       handleAdd(objArray);
@@ -28,6 +28,10 @@ const TournamentCoverage = () => {
     setTD((TD) => [...TD, ...td]);
   };
 
+  const divisionFiltered = !Object.values(props.divisionFilter).every(
+    (element) => element === false
+  );
+
   return (
     <Grid
       container
@@ -36,8 +40,11 @@ const TournamentCoverage = () => {
       columns={{ xs: 1, sm: 2, md: 4, lg: 6, xl: 8, xxl: 12 }}
       justifyContent="center"
     >
-      <Grid item xs={12}>
-        <Box sx={{ p: "15px", mb: "15px" }} gutterBottom>
+      <Grid item key="pageDesc" xs={12}>
+        <Box
+          sx={{ p: "15px", mb: "15px", justifyContent: "center" }}
+          gutterBottom
+        >
           <Typography
             component="h1"
             variant="h1"
@@ -47,15 +54,20 @@ const TournamentCoverage = () => {
           >
             Post-Production Coverage
           </Typography>
-          <Typography variant="subtitle2" align="center">
-            Consolidates links to the latest Disc Golf pro tour and tournament
+          <Typography
+            variant="subtitle2"
+            sx={{ textAlign: "center", fontSize: "medium" }}
+          >
+            Consolidated links for the latest disc golf pro tour and tournament
             coverage. Filter by channel and tier. New links will added as they
             come.
           </Typography>
         </Box>
       </Grid>
-      {(TD || []).map((snap) => (
-        <Grid item xs={2} key={snap.id}>
+      {(TD || []).map((snap) =>
+        divisionFiltered && !props.divisionFilter[snap.division] ? (
+          ""
+        ) : (
           <TournamentCard
             name={snap.name}
             dates={snap.dates}
@@ -65,9 +77,10 @@ const TournamentCoverage = () => {
             startdate={snap.startdate}
             id={snap.id}
             key={snap.id}
+            channelFilter={props.channelFilter}
           />
-        </Grid>
-      ))}
+        )
+      )}
     </Grid>
   );
 };

@@ -36,7 +36,6 @@ const Header = (props) => {
           fontSize="large"
           color="secondary"
           edge="start"
-          onClick={handleDrawerToggle}
           sx={{
             mr: 2,
             display: { sm: "block", xs: "none" },
@@ -81,7 +80,7 @@ const Header = (props) => {
           sx={{
             mt: 3,
             borderBottom: "2px solid white",
-            p: "4px",
+            p: "6px",
 
             "@media (min-width:600px)": {
               pr: 3,
@@ -101,13 +100,13 @@ const Header = (props) => {
         <MenuItem
           sx={{
             mt: 3,
-            p: "4px",
+            p: "6px",
             "@media (min-width:600px)": {
               pr: 3,
               pl: 3,
             },
           }}
-          key="coverage"
+          key="upcoming"
         >
           <Typography variant="h4" textAlign="center">
             Upcoming
@@ -116,14 +115,14 @@ const Header = (props) => {
         <MenuItem
           sx={{
             mt: 3,
-            p: "4px",
+            p: "6px",
 
             "@media (min-width:600px)": {
               pr: 3,
               pl: 3,
             },
           }}
-          key="coverage"
+          key="about"
         >
           <Typography variant="h4" textAlign="center">
             About

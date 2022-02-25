@@ -104,95 +104,118 @@ export default function TournamentCard(props) {
     </CardActions>
   );
 
-  return (
-    <Card sx={{ minWidth: 290 }}>
-      <CardHeader
-        avatar={
-          <Avatar
-            sx={{ bgcolor: `${avatarColor(props.division)}` }}
-            aria-label="division"
-          >
-            {props.division}
-          </Avatar>
-        }
-        title={props.name}
-        subheader={
-          <div>
-            {props.dates}
-            <br />
-            <Grid container columns={3} sx={{ alignItems: "center" }}>
-              <Grid item xs={2} sx={{ alignItems: "center" }}>
-                <Typography color="text.secondary" variant="subtitle2">
-                  <PublicIcon
-                    sx={{ verticalAlign: "middle" }}
-                    fontSize="small"
-                    style={{ position: "relative", bottom: "2px" }}
-                  />{" "}
-                  {props.location}
-                </Typography>
+  const channelFiltered = !Object.values(props.channelFilter).every(
+    (element) => element === false
+  );
+  let filteredChannels = [];
+
+  //console.log(props.channelFilter);
+  //check to see if channels have been filtered and create updated filtered array
+  if (channelFiltered) {
+    for (const property in channels) {
+      if (props.channelFilter[channels[property].channel]) {
+        console.log(channels[property]);
+        filteredChannels = [...filteredChannels, channels[property]];
+      }
+    }
+  } else {
+    filteredChannels = [...channels];
+  }
+
+  //only render card if there is at least one channel
+  return filteredChannels.length > 0 ? (
+    <Grid item xs={2} key={props.id}>
+      <Card sx={{ minWidth: 325 }}>
+        <CardHeader
+          avatar={
+            <Avatar
+              sx={{ bgcolor: `${avatarColor(props.division)}` }}
+              aria-label="division"
+            >
+              {props.division}
+            </Avatar>
+          }
+          title={props.name}
+          subheader={
+            <div>
+              {props.dates}
+              <br />
+              <Grid container columns={3} sx={{ alignItems: "center" }}>
+                <Grid item xs={2} sx={{ alignItems: "center" }}>
+                  <Typography color="text.secondary" variant="subtitle2">
+                    <PublicIcon
+                      sx={{ verticalAlign: "middle" }}
+                      fontSize="small"
+                      style={{ position: "relative", bottom: "2px" }}
+                    />{" "}
+                    {props.location}
+                  </Typography>
+                </Grid>
+                <Grid item xs={1}>
+                  <Typography
+                    color="text.secondary"
+                    align="right"
+                    variant="subtitle2"
+                  >
+                    <EmojiEventsIcon
+                      sx={{ verticalAlign: "middle" }}
+                      fontSize="small"
+                      style={{ position: "relative", bottom: "2px" }}
+                    />{" "}
+                    {props.purse}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={1}>
-                <Typography
-                  color="text.secondary"
-                  align="right"
-                  variant="subtitle2"
-                >
-                  <EmojiEventsIcon
-                    sx={{ verticalAlign: "middle" }}
-                    fontSize="small"
-                    style={{ position: "relative", bottom: "2px" }}
-                  />{" "}
-                  {props.purse}
-                </Typography>
-              </Grid>
-            </Grid>
-          </div>
-        }
-        titleTypographyProps={{ fontWeight: "bold" }}
-        sx={{ backgroundColor: cardHeaderColor(props.startdate) }}
-      />
+            </div>
+          }
+          titleTypographyProps={{ fontWeight: "bold" }}
+          sx={{ backgroundColor: cardHeaderColor(props.startdate) }}
+        />
 
-      {channels[0] ? (
-        <CardContent sx={{ pb: "0px" }}>
-          <Typography component={"span"} variant="h3">
-            <img
-              src={images[channels[0].channel]}
-              alt={channels[0].channel}
-              style={{ width: "7%", height: "auto" }}
-            ></img>{" "}
-            {`${channels[0].card}`}{" "}
-          </Typography>
-          <Links
-            descriptions={channels[0].links.descriptions}
-            links={channels[0].links.links}
-            key={`T${props.id}C${channels[0].id}`}
-          ></Links>{" "}
-        </CardContent>
-      ) : (
-        ""
-      )}
-
-      {channels[1] ? cardActions : ""}
-
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        {(channels.slice(1) || []).map((snap, index) => (
-          <CardContent key={`${snap.channel}`} sx={{ pb: "0px" }}>
-            <Typography component={"span"} variant="h3" gutterBottom>
+        {filteredChannels[0] ? (
+          <CardContent sx={{ pb: "0px" }}>
+            <Typography component={"span"} variant="h3">
               <img
-                src={images[snap.channel]}
-                alt={`${snap.channel}`}
+                src={images[filteredChannels[0].channel]}
+                alt={filteredChannels[0].channel}
                 style={{ width: "7%", height: "auto" }}
               ></img>{" "}
-              {`${snap.card}`}
+              {`${filteredChannels[0].card}`}{" "}
             </Typography>
             <Links
-              descriptions={snap.links.descriptions}
-              links={snap.links.links}
-              key={`T${props.id}C${snap.id}`}
-            ></Links>
+              descriptions={filteredChannels[0].links.descriptions}
+              links={filteredChannels[0].links.links}
+              key={`T${props.id}C${filteredChannels[0].id}`}
+            ></Links>{" "}
           </CardContent>
-        ))}
-      </Collapse>
-    </Card>
+        ) : (
+          ""
+        )}
+
+        {filteredChannels[1] ? cardActions : ""}
+
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          {(filteredChannels.slice(1) || []).map((snap, index) => (
+            <CardContent key={`${snap.channel}`} sx={{ pb: "0px" }}>
+              <Typography component={"span"} variant="h3" gutterBottom>
+                <img
+                  src={images[snap.channel]}
+                  alt={`${snap.channel}`}
+                  style={{ width: "7%", height: "auto" }}
+                ></img>{" "}
+                {`${snap.card}`}
+              </Typography>
+              <Links
+                descriptions={snap.links.descriptions}
+                links={snap.links.links}
+                key={`T${props.id}C${snap.id}`}
+              ></Links>
+            </CardContent>
+          ))}
+        </Collapse>
+      </Card>
+    </Grid>
+  ) : (
+    ""
   );
 }

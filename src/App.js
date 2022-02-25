@@ -17,14 +17,16 @@ const drawerWidth = 200;
 const App = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [filter, setFilter] = React.useState({
+  const [divisionFilter, setDivisionFilter] = React.useState({
+    NT: false,
+    A: false,
+    B: false,
+  });
+  const [channelFilter, setChannelFilter] = React.useState({
     Jomez: false,
     GateKeeper: false,
     GKPro: false,
     AceRunPro: false,
-    NT: false,
-    A: false,
-    B: false,
   });
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -33,25 +35,36 @@ const App = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleFilterToggle = (e) => {
+  const handleDivisionFilterToggle = (e) => {
     e.preventDefault();
-    let updatedFilter;
-    if (e.currentTarget.id === "Clear") {
-      updatedFilter = {
-        Jomez: false,
-        GateKeeper: false,
-        GKPro: false,
-        AceRunPro: false,
-        NT: false,
-        A: false,
-        B: false,
-      };
-    } else {
-      updatedFilter = { ...filter };
-      updatedFilter[e.currentTarget.id] = !filter[e.currentTarget.id];
-    }
-    setFilter((filter) => ({
+    let updatedFilter = { ...divisionFilter };
+    updatedFilter[e.currentTarget.id] = !divisionFilter[e.currentTarget.id];
+    setDivisionFilter((divisionFilter) => ({
       ...updatedFilter,
+    }));
+  };
+
+  const handleChannelFilterToggle = (e) => {
+    e.preventDefault();
+    let updatedFilter = { ...channelFilter };
+    updatedFilter[e.currentTarget.id] = !channelFilter[e.currentTarget.id];
+    setChannelFilter((channelFilter) => ({
+      ...updatedFilter,
+    }));
+  };
+
+  const handleClearFilter = (e) => {
+    e.preventDefault();
+    setChannelFilter((channelFilter) => ({
+      Jomez: false,
+      GateKeeper: false,
+      GKPro: false,
+      AceRunPro: false,
+    }));
+    setDivisionFilter((divisionFilter) => ({
+      NT: false,
+      A: false,
+      B: false,
     }));
   };
 
@@ -63,11 +76,14 @@ const App = (props) => {
 
         <SideBar
           handleDrawerToggle={handleDrawerToggle}
-          handleFilterToggle={handleFilterToggle}
+          handleDivisionFilterToggle={handleDivisionFilterToggle}
+          handleChannelFilterToggle={handleChannelFilterToggle}
+          handleClearFilter={handleClearFilter}
           mobileOpen={mobileOpen}
           container={container}
           drawerWidth={drawerWidth}
-          filter={filter}
+          divisionFilter={divisionFilter}
+          channelFilter={channelFilter}
         />
         <Box
           component="main"
@@ -80,7 +96,10 @@ const App = (props) => {
         >
           <Toolbar />
           <main>
-            <TournamentCoverage />
+            <TournamentCoverage
+              divisionFilter={divisionFilter}
+              channelFilter={channelFilter}
+            />
           </main>
           {/* <UpcomingTournaments /> */}
 
