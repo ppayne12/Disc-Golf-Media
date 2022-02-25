@@ -9,6 +9,7 @@ const TournamentCoverage = (props) => {
   const [TD, setTD] = React.useState([]);
 
   React.useEffect(() => {
+    console.log("retrieved tournament");
     const fetchData = async () => {
       const data = await FirestoreService.getTournaments();
       let objArray = [];
@@ -59,8 +60,8 @@ const TournamentCoverage = (props) => {
             sx={{ textAlign: "center", fontSize: "medium" }}
           >
             Consolidated links for the latest disc golf pro tour and tournament
-            coverage. Filter by channel and tier. New links will added as they
-            come.
+            coverage. Coverage can be filtered by channel and tier using the
+            side bar. New links will added as they come.
           </Typography>
         </Box>
       </Grid>
