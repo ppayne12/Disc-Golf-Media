@@ -25,8 +25,11 @@ const SideBar = (props) => {
   const mobileOpen = props.mobileOpen;
   const handleDrawerToggle = props.handleDrawerToggle;
   const drawerWidth = props.drawerWidth;
-  const handleFilterToggle = props.handleFilterToggle;
-  const filter = props.filter;
+  const handleDivisionFilterToggle = props.handleDivisionFilterToggle;
+  const handleChannelFilterToggle = props.handleChannelFilterToggle;
+  const handleClearFilter = props.handleClearFilter;
+  const channelFilter = props.channelFilter;
+  const divisionFilter = props.divisionFilter;
 
   const drawer = (
     <div>
@@ -37,10 +40,10 @@ const SideBar = (props) => {
           <Typography variant="h2">Coverage</Typography>{" "}
         </ListItem>
         <ListItem
-          selected={filter["Jomez"]}
+          selected={channelFilter["Jomez"]}
           button
           id="Jomez"
-          onClick={handleFilterToggle}
+          onClick={handleChannelFilterToggle}
         >
           <img
             src={Jomez}
@@ -50,10 +53,10 @@ const SideBar = (props) => {
           <ListItemText primary="Jomez Productions" />
         </ListItem>
         <ListItem
-          selected={filter["GateKeeper"]}
+          selected={channelFilter["GateKeeper"]}
           button
           id="GateKeeper"
-          onClick={handleFilterToggle}
+          onClick={handleChannelFilterToggle}
         >
           <img
             src={GateKeeper}
@@ -64,10 +67,10 @@ const SideBar = (props) => {
         </ListItem>
 
         <ListItem
-          selected={filter["GKPro"]}
+          selected={channelFilter["GKPro"]}
           button
           id="GKPro"
-          onClick={handleFilterToggle}
+          onClick={handleChannelFilterToggle}
         >
           <img
             src={GKpro}
@@ -77,10 +80,10 @@ const SideBar = (props) => {
           <ListItemText primary="GK Pro" />
         </ListItem>
         <ListItem
-          selected={filter["AceRunPro"]}
+          selected={channelFilter["AceRunPro"]}
           button
           id="AceRunPro"
-          onClick={handleFilterToggle}
+          onClick={handleChannelFilterToggle}
         >
           <img
             src={Acerunpro}
@@ -91,10 +94,10 @@ const SideBar = (props) => {
         </ListItem>
         <Divider />
         <ListItem
-          selected={filter["NT"]}
+          selected={divisionFilter["NT"]}
           button
           id="NT"
-          onClick={handleFilterToggle}
+          onClick={handleDivisionFilterToggle}
         >
           <Avatar sx={{ bgcolor: `#db222a`, mr: "5px" }} aria-label="division">
             NT
@@ -102,10 +105,10 @@ const SideBar = (props) => {
           <ListItemText primary="National Tour" />
         </ListItem>
         <ListItem
-          selected={filter["A"]}
+          selected={divisionFilter["A"]}
           button
           id="A"
-          onClick={handleFilterToggle}
+          onClick={handleDivisionFilterToggle}
         >
           <Avatar sx={{ bgcolor: `#723C70`, mr: "5px" }} aria-label="division">
             A
@@ -113,10 +116,10 @@ const SideBar = (props) => {
           <ListItemText primary="A Tier" />
         </ListItem>
         <ListItem
-          selected={filter["B"]}
+          selected={divisionFilter["B"]}
           button
           id="B"
-          onClick={handleFilterToggle}
+          onClick={handleDivisionFilterToggle}
         >
           <Avatar sx={{ bgcolor: `#0091AD`, mr: "5px" }} aria-label="division">
             B
@@ -124,12 +127,7 @@ const SideBar = (props) => {
           <ListItemText primary="B Tier" />
         </ListItem>
         <Divider />
-        <ListItem
-          selected={filter["Clear"]}
-          button
-          id="Clear"
-          onClick={handleFilterToggle}
-        >
+        <ListItem button id="Clear" onClick={handleClearFilter}>
           <ListItemText primary="Clear Filters" />
         </ListItem>
       </List>

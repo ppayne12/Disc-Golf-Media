@@ -62,6 +62,9 @@ const theme = createTheme({
       },
     },
     subtitle2: {
+      fontStyle: "italic",
+    },
+    subtitle: {
       fontWeight: 300,
       fontSize: "medium",
       fontStyle: "italic",
