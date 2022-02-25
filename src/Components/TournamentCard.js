@@ -114,7 +114,6 @@ export default function TournamentCard(props) {
   if (channelFiltered) {
     for (const property in channels) {
       if (props.channelFilter[channels[property].channel]) {
-        console.log(channels[property]);
         filteredChannels = [...filteredChannels, channels[property]];
       }
     }
