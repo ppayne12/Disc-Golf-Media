@@ -136,11 +136,15 @@ const SideBar = (props) => {
 
   return (
     <Box
+      sx={
+        props.tab === "coverage"
+          ? {
+              width: { sm: drawerWidth },
+              flexShrink: { sm: 0 },
+            }
+          : { display: "none" }
+      }
       component="nav"
-      sx={{
-        width: { sm: drawerWidth },
-        flexShrink: { sm: 0 },
-      }}
       aria-label="Channels"
     >
       <Drawer //mobile display

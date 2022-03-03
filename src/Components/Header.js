@@ -13,6 +13,26 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const Header = (props) => {
   const handleDrawerToggle = props.handleDrawerToggle;
+  const menuStyle = {
+    mt: 3,
+    p: "6px",
+    "@media (min-width:600px)": {
+      pr: 3,
+      pl: 3,
+    },
+  };
+
+  const underline = {
+    borderBottom: "2px solid white",
+  };
+
+  const changeTab = React.useCallback(
+    (tab) => {
+      console.log(tab);
+      props.setTab(tab);
+    },
+    [props.setTab]
+  );
   return (
     <AppBar
       position="fixed"
@@ -21,25 +41,33 @@ const Header = (props) => {
       }}
     >
       <Toolbar>
-        <IconButton
-          aria-label="open drawer"
-          edge="start"
-          color="secondary"
-          fontSize="large"
-          onClick={handleDrawerToggle}
-          sx={{ mr: 2, display: { sm: "none" } }}
-        >
-          <MenuIcon fontSize="large" color="secondary" />
-        </IconButton>
+        {props.tab === "coverage" ? (
+          <IconButton
+            aria-label="open drawer"
+            edge="start"
+            color="secondary"
+            fontSize="large"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon fontSize="large" color="secondary" />
+          </IconButton>
+        ) : (
+          <></>
+        )}
         <Icon
           aria-label="Logo"
           fontSize="large"
           color="secondary"
           edge="start"
-          sx={{
-            mr: 2,
-            display: { sm: "block", xs: "none" },
-          }}
+          sx={
+            props.tab === "coverage"
+              ? {
+                  mr: 2,
+                  display: { sm: "block", xs: "none" },
+                }
+              : { mr: 2 }
+          }
         >
           <OndemandVideoIcon fontSize="large" />
         </Icon>
@@ -77,54 +105,51 @@ const Header = (props) => {
           </Grid>
         </Grid>
         <MenuItem
-          sx={{
-            mt: 3,
-            borderBottom: "2px solid white",
-            p: "6px",
-
-            "@media (min-width:600px)": {
-              pr: 3,
-              pl: 3,
-            },
-          }}
+          sx={
+            props.tab === "coverage"
+              ? { ...menuStyle, ...underline }
+              : menuStyle
+          }
           key="coverage"
+          onClick={() => changeTab("coverage")}
         >
           <Typography
             variant="h4"
-            sx={{ fontWeight: "600" }}
+            sx={props.tab === "coverage" ? { fontWeight: "600" } : {}}
             textAlign="center"
           >
             Coverage
           </Typography>
         </MenuItem>
         <MenuItem
-          sx={{
-            mt: 3,
-            p: "6px",
-            "@media (min-width:600px)": {
-              pr: 3,
-              pl: 3,
-            },
-          }}
+          sx={
+            props.tab === "upcoming"
+              ? { ...menuStyle, ...underline }
+              : menuStyle
+          }
           key="upcoming"
+          onClick={() => changeTab("upcoming")}
         >
-          <Typography variant="h4" textAlign="center">
+          <Typography
+            variant="h4"
+            sx={props.tab === "upcoming" ? { fontWeight: "600" } : {}}
+            textAlign="center"
+          >
             Upcoming
           </Typography>
         </MenuItem>
         <MenuItem
-          sx={{
-            mt: 3,
-            p: "6px",
-
-            "@media (min-width:600px)": {
-              pr: 3,
-              pl: 3,
-            },
-          }}
+          sx={
+            props.tab === "about" ? { ...menuStyle, ...underline } : menuStyle
+          }
           key="about"
+          onClick={() => changeTab("about")}
         >
-          <Typography variant="h4" textAlign="center">
+          <Typography
+            variant="h4"
+            sx={props.tab === "above" ? { fontWeight: "600" } : {}}
+            textAlign="center"
+          >
             About
           </Typography>
         </MenuItem>

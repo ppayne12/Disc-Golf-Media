@@ -25,10 +25,15 @@ const Footer = () => {
     <footer>
       <Container>
         <Grid container alignItems="center" justifyContent="center">
-          <MailIcon sx={icons} fontSize="medium" />
-
-          <InstagramIcon sx={icons} fontSize="medium" />
-          <TwitterIcon sx={icons} fontSize="medium" />
+          <Link href="mailto:paul@discgolf.media">
+            <MailIcon sx={icons} fontSize="medium" />
+          </Link>
+          <Link href="https://www.instagram.com/disgolf.media/" target="_blank">
+            <InstagramIcon sx={icons} fontSize="medium" />
+          </Link>
+          <Link href="https://twitter.com/discgolfmedia" target="_blank">
+            <TwitterIcon sx={icons} fontSize="medium" />
+          </Link>
         </Grid>
         <Typography variant="subtitle1" align="center">
           <Copyright />

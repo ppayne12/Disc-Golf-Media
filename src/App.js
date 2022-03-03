@@ -1,9 +1,9 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import SideBar from "./Components/SideBar";
 import UpcomingTournaments from "./Components/UpcomingTournaments";
+import About from "./Components/About";
 import theme from "./Theme";
 import { ThemeProvider } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,6 +17,7 @@ const drawerWidth = 200;
 const App = (props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [tab, setTab] = React.useState("coverage");
   const [divisionFilter, setDivisionFilter] = React.useState({
     NT: false,
     A: false,
@@ -72,7 +73,11 @@ const App = (props) => {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Header handleDrawerToggle={handleDrawerToggle} />
+        <Header
+          handleDrawerToggle={handleDrawerToggle}
+          tab={tab}
+          setTab={setTab}
+        />
 
         <SideBar
           handleDrawerToggle={handleDrawerToggle}
@@ -84,6 +89,7 @@ const App = (props) => {
           drawerWidth={drawerWidth}
           divisionFilter={divisionFilter}
           channelFilter={channelFilter}
+          tab={tab}
         />
         <Box
           component="main"
@@ -97,11 +103,13 @@ const App = (props) => {
           <Toolbar />
           <main>
             <TournamentCoverage
+              show={tab === "coverage" ? true : false}
               divisionFilter={divisionFilter}
               channelFilter={channelFilter}
             />
+            <UpcomingTournaments show={tab === "upcoming" ? true : false} />
+            <About show={tab === "about" ? true : false} />
           </main>
-          {/* <UpcomingTournaments /> */}
 
           <Toolbar />
           <Footer />
