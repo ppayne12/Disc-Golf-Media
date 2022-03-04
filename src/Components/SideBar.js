@@ -15,6 +15,7 @@ import Jomez from "../images/jomez.png";
 import GateKeeper from "../images/gatekeeper.png";
 import Acerunpro from "../images/acerunpro.png";
 import GKpro from "../images/gkpro.webp";
+import DiscGolfGuy from "../images/discgolfguy.png";
 
 const icons = {
   margin: "0 5px",
@@ -39,6 +40,41 @@ const SideBar = (props) => {
           <FilterList sx={icons}></FilterList>
           <Typography variant="h2">Coverage</Typography>{" "}
         </ListItem>
+
+        <ListItem
+          selected={divisionFilter["NT"]}
+          button
+          id="NT"
+          onClick={handleDivisionFilterToggle}
+        >
+          <Avatar sx={{ bgcolor: `#db222a`, mr: "5px" }} aria-label="division">
+            NT
+          </Avatar>
+          <ListItemText primary="National Tour" />
+        </ListItem>
+        <ListItem
+          selected={divisionFilter["A"]}
+          button
+          id="A"
+          onClick={handleDivisionFilterToggle}
+        >
+          <Avatar sx={{ bgcolor: `#723C70`, mr: "5px" }} aria-label="division">
+            A
+          </Avatar>
+          <ListItemText primary="A Tier" />
+        </ListItem>
+        <ListItem
+          selected={divisionFilter["B"]}
+          button
+          id="B"
+          onClick={handleDivisionFilterToggle}
+        >
+          <Avatar sx={{ bgcolor: `#0091AD`, mr: "5px" }} aria-label="division">
+            B
+          </Avatar>
+          <ListItemText primary="B Tier" />
+        </ListItem>
+        <Divider />
         <ListItem
           selected={channelFilter["Jomez"]}
           button
@@ -92,39 +128,18 @@ const SideBar = (props) => {
           ></img>
           <ListItemText primary="Ace Run Productions" />
         </ListItem>
-        <Divider />
         <ListItem
-          selected={divisionFilter["NT"]}
+          selected={channelFilter["DiscGolfGuy"]}
           button
-          id="NT"
-          onClick={handleDivisionFilterToggle}
+          id="DiscGolfGuy"
+          onClick={handleChannelFilterToggle}
         >
-          <Avatar sx={{ bgcolor: `#db222a`, mr: "5px" }} aria-label="division">
-            NT
-          </Avatar>
-          <ListItemText primary="National Tour" />
-        </ListItem>
-        <ListItem
-          selected={divisionFilter["A"]}
-          button
-          id="A"
-          onClick={handleDivisionFilterToggle}
-        >
-          <Avatar sx={{ bgcolor: `#723C70`, mr: "5px" }} aria-label="division">
-            A
-          </Avatar>
-          <ListItemText primary="A Tier" />
-        </ListItem>
-        <ListItem
-          selected={divisionFilter["B"]}
-          button
-          id="B"
-          onClick={handleDivisionFilterToggle}
-        >
-          <Avatar sx={{ bgcolor: `#0091AD`, mr: "5px" }} aria-label="division">
-            B
-          </Avatar>
-          <ListItemText primary="B Tier" />
+          <img
+            src={DiscGolfGuy}
+            alt="Disc Golf Guy"
+            style={{ width: "20%", height: "auto", margin: "5px" }}
+          ></img>
+          <ListItemText primary="Disc Golf Guy" />
         </ListItem>
         <Divider />
         <ListItem button id="Clear" onClick={handleClearFilter}>

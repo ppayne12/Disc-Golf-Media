@@ -16,6 +16,7 @@ import GateKeeper from "../images/gatekeeper.png";
 import AceRunPro from "../images/acerunpro.png";
 import GKPro from "../images/gkpro.webp";
 import CHSports from "../images/chsport.jpeg";
+import DiscGolfGuy from "../images/discgolfguy.png";
 import * as FirestoreService from "../Services/Firestore";
 import PublicIcon from "@mui/icons-material/Public";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";

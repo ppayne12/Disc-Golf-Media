@@ -28,6 +28,7 @@ const App = (props) => {
     GateKeeper: false,
     GKPro: false,
     AceRunPro: false,
+    DiscGolfGuy: false,
   });
   const container =
     window !== undefined ? () => window().document.body : undefined;
@@ -61,6 +62,7 @@ const App = (props) => {
       GateKeeper: false,
       GKPro: false,
       AceRunPro: false,
+      DiscGolfGuy: false,
     }));
     setDivisionFilter((divisionFilter) => ({
       NT: false,
