@@ -65,7 +65,7 @@ const App = (props) => {
       DiscGolfGuy: false,
     }));
     setDivisionFilter((divisionFilter) => ({
-      NT: false,
+      PT: false,
       A: false,
       B: false,
     }));

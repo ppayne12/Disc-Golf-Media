@@ -23,7 +23,7 @@ export default function Links(props) {
             href={`${props.links[index]}`}
             target="_blank"
             rel="noopener"
-            sx={{ pr: "10px" }}
+            sx={{ pr: "10px", fontWeight: "500" }}
           >
             {element}
           </Link>

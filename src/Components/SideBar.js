@@ -42,15 +42,15 @@ const SideBar = (props) => {
         </ListItem>
 
         <ListItem
-          selected={divisionFilter["NT"]}
+          selected={divisionFilter["PT"]}
           button
-          id="NT"
+          id="PT"
           onClick={handleDivisionFilterToggle}
         >
           <Avatar sx={{ bgcolor: `#db222a`, mr: "5px" }} aria-label="division">
-            NT
+            PT
           </Avatar>
-          <ListItemText primary="National Tour" />
+          <ListItemText primary="Disc Golf Pro Tour" />
         </ListItem>
         <ListItem
           selected={divisionFilter["A"]}

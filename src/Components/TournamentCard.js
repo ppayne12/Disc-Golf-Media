@@ -39,6 +39,7 @@ export default function TournamentCard(props) {
     GateKeeper,
     GKPro,
     CHSports,
+    DiscGolfGuy,
   };
 
   const [expanded, setExpanded] = React.useState(false);
@@ -81,7 +82,7 @@ export default function TournamentCard(props) {
         return "#723C70";
       case "B":
         return "#0091AD";
-      case "NT":
+      case "PT":
         return "#db222a";
       default:
         return "#523D73";
